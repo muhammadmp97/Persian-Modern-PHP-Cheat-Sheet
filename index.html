@@ -1,0 +1,837 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <link rel="dns-prefetch" href="//fonts.googleapis.com">
+        <link rel="dns-prefetch" href="//use.fontawesome.com">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>Modern PHP Cheat Sheet - Front Line PHP</title>
+        <meta name="description" content="Modern PHP Cheat Sheet from the book Front Line PHP">
+        <link rel="canonical" href="https://front-line-php.com/cheat-sheet"/>
+
+        <link href="https://fonts.googleapis.com/css2?family=Staatliches&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css">
+        <link href="https://front-line-php.com/css/app.css?id=e90c520577be5e8902ef" rel="stylesheet">
+
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="theme-color" content="#ffffff">
+        <meta name="twitter:card" content="summary_large_image"/>
+        <meta name="twitter:creator" content="@spatie_be"/>
+        <meta name="twitter:site" content="@spatie_be"/>
+        <meta name="twitter:title" content="Modern PHP Cheat Sheet"/>
+        <meta name="twitter:description"
+        content="Modern PHP Cheat Sheet from the book Front Line PHP"/>
+        <meta name="twitter:image" content="https://front-line-php.com/images/social-card.jpg"/>
+
+        <meta property="og:site_name" content="Front Line PHP">
+        <meta property="og:locale" content="en_US">
+        <meta property="og:url" content="https://front-line-php.com/cheat-sheet"/>
+        <meta property="og:type" content="product"/>
+        <meta property="og:title" content="Modern PHP Cheat Sheet"/>
+        <meta property="og:description"
+            content="Modern PHP Cheat Sheet from the book Front Line PHP"/>
+        <meta property="og:image" content="https://front-line-php.com/images/social-card.jpg"/>
+        <script src="https://cdn.paddle.com/paddle/paddle.js"></script>
+        
+        <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.7.3/dist/alpine.min.js" defer></script>
+
+
+                    </head>
+    <body class="overflow-x-hidden font-sans text-black">
+        <header>
+    <div class="h-32">
+        <img alt="" srcset="https://front-line-php.com/images/header-2400.jpg 2400w, https://front-line-php.com/images/header-1200.jpg 1200w" sizes="100vw" src="https://front-line-php.com/images/header-2400.jpg" class="absolute top-0 left-0 w-full h-full object-cover">
+        <div class="mx-auto px-4 sm:px-16 h-32 flex items-center">
+            <a href="/" class="font-display leading-none text-white text-xl">
+                <span>&larr;</span> Front Line PHP
+            </a>
+        </div>
+    </div>
+
+    <div class="mx-auto px-4 sm:px-16 py-16">
+        <h1 class="font-display text-4xl sm:text-5xl md:text-6xl leading-none">
+            Modern PHP Cheat Sheet        </h1>
+        <p>
+            A to-the-point summary of all awesome PHP features
+        </p>
+    </div>
+</header>
+
+<div class="mx-auto sm:px-16">
+    </div>
+
+<main class="mx-auto px-4 sm:px-16">
+    <div class="lg:flex lg:space-x-16 ">
+        <nav class="text-sm w-64 lg:w-auto flex-none pb-12">
+            <ul class="sticky top-0 py-4 -my-4 space-y-2 text-blue-500 font-semibold">
+    <li>
+        <a class="hover:opacity-75" href="#arrays">Arrays</a>
+        <ul class="pl-2 my-1 space-y-1 border-l border-black text-xs font-normal">
+            <li><a class="hover:opacity-75" href="#destructuring">Destructuring</a></li>
+            <li><a class="hover:opacity-75" href="#rest-spread-operators">Rest and Spread Operators</a></li>
+        </ul>
+    </li>
+    <li><a class="hover:opacity-75" href="#attributes">Attributes</a></li>
+    <li>
+        <a class="hover:opacity-75" href="#cosmetics">Cosmetics</a>
+        <ul class="pl-2 my-1 space-y-1 border-l border-black text-xs font-normal">
+            <li><a class="hover:opacity-75" href="#class-names">Class Names</a></li>
+            <li><a class="hover:opacity-75" href="#format-numeric-values">Numeric Values</a></li>
+            <li><a class="hover:opacity-75" href="#trailing-commas">Trailing Commas</a></li>
+        </ul>
+    </li>
+    <li><a class="hover:opacity-75" href="#exceptions">Exceptions</a></li>
+    <li><a class="hover:opacity-75" href="#match-expression">Match Expression</a></li>
+    <li>
+        <a class="hover:opacity-75" href="#dealing-with-null">Null</a>
+        <ul class="pl-2 my-1 space-y-1 border-l border-black text-xs font-normal">
+            <li><a class="hover:opacity-75" href="#null-coalescing-operator">Null Coalescing Operator</a></li>
+            <li><a class="hover:opacity-75" href="#nullsafe-operator">Nullsafe Operator</a></li>
+        </ul>
+    </li>
+    <li><a class="hover:opacity-75" href="#named-arguments">Named Arguments</a></li>
+    <li>
+        <a class="hover:opacity-75" href="#performance">Performance</a>
+        <ul class="pl-2 my-1 space-y-1 border-l border-black text-xs font-normal">
+            <li><a class="hover:opacity-75" href="#jit">JIT</a></li>
+            <li><a class="hover:opacity-75" href="#preloading">Preloading</a></li>
+        </ul>
+    </li>
+    <li><a class="hover:opacity-75" href="#property-promotion">Property Promotion</a></li>
+    <li><a class="hover:opacity-75" href="#short-closures">Short Closures</a></li>
+    <li>
+        <a class="hover:opacity-75" href="#types">Types</a>
+        <ul class="pl-2 my-1 space-y-1 border-l border-black text-xs font-normal">
+            <li><a class="hover:opacity-75" href="#built-in-types">Built-in Types</a></li>
+            <li><a class="hover:opacity-75" href="#typed-properties">Typed Properties</a></li>
+            <li><a class="hover:opacity-75" href="#union-types">Union Types</a></li>
+        </ul>
+    </li>
+</ul>
+        </nav>
+        <div>
+            <aside class="mx-auto max-w-article sm:px-16">
+    <div style="background-image: linear-gradient(to right, #0756b0 0%, #4530a8 80%)" class="z-10 -mb-4 text-white px-6 py-4 text-sm">
+        This sample is an excerpt from the ebook <a href="/"><strong class="font-semibold hover:opacity-75">Front Line PHP</strong></a>. 
+        <br>Check out <a href="/" class="underline hover:opacity-75">the entire book</a> to learn how to build modern applications in PHP 8.
+    </div>
+</aside>            <article class="grid lg:grid-cols-2 gap-12 pb-24 markup markup-links markup-lists markup-code markup-tables">
+
+
+                <div id="arrays" class="lg:col-span-2 bg-blue-200 bg-opacity-50 p-6 target:shadow-xl target:bg-yellow-100">
+    <h2 class="marker-target flex items-center">
+        <a href="#arrays"
+            class="markup-anchor">#
+        </a>
+
+        Arrays
+
+            </h2>
+
+    <div class="grid lg:grid-cols-2 gap-6">
+         <div id="destructuring" class=" bg-blue-300 bg-opacity-20 p-6 target:shadow-xl target:bg-yellow-100">
+    <h3 class="marker-target flex items-center">
+        <a href="#destructuring"
+            class="markup-anchor">#
+        </a>
+
+        Destructuring
+
+                     <small class="ml-2 inline-block font-sans font-semibold border border-black  border-opacity-50 bg-opacity-75 text-black px-1 text-xxs">7.1</small>
+ 
+            </h3>
+
+    You can destructure arrays to pull out several elements into separate variables:
+
+<pre><code class="language- hljs ">$array = [1, 2, 3];
+
+// Using the list syntax:
+<span class="hljs-highlight  keyword">list</span>($a, $b, $c) = $array;
+
+// Or the shorthand syntax:
+[$a, $b, $c] = $array;</code></pre>
+
+You can skip elements:
+
+<pre><code class="language-php hljs php">[, , $c] = $array;
+
+<span class="hljs-comment">// $c = 3</span></code></pre>
+
+As well as destructure based on keys:
+
+<pre><code class="language-php hljs php">$array = [
+    <span class="hljs-string">'a'</span> =&gt; <span class="hljs-number">1</span>,
+    <span class="hljs-string">'b'</span> =&gt; <span class="hljs-number">2</span>,
+    <span class="hljs-string">'c'</span> =&gt; <span class="hljs-number">3</span>,
+];
+
+[<span class="hljs-string">'c'</span> =&gt; $c, <span class="hljs-string">'a'</span> =&gt; $a] = $array;</code></pre>
+</div>
+ 
+         <div id="rest-spread-operators" class=" bg-blue-300 bg-opacity-20 p-6 target:shadow-xl target:bg-yellow-100">
+    <h3 class="marker-target flex items-center">
+        <a href="#rest-spread-operators"
+            class="markup-anchor">#
+        </a>
+
+        Rest and Spread Operators
+
+                     <small class="ml-2 inline-block font-sans font-semibold border border-black  border-opacity-50 bg-opacity-75 text-black px-1 text-xxs">5.6</small>
+ 
+            </h3>
+
+    Arrays can be spread into functions:
+
+<pre><code class="language-php hljs php">$array = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>];
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">foo</span><span class="hljs-params">(<span class="hljs-highlight  type">int</span> $a, <span class="hljs-highlight  type">int</span> $b)</span> </span>{ <span class="hljs-comment">/* … */</span> }
+
+<span class="hljs-highlight  prop">foo</span>(...$array);</code></pre>
+
+Functions can automatically collect the rest of the variables using the same operator:
+
+
+<pre><code class="language-php hljs php"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">foo</span><span class="hljs-params">($first, ...$other)</span> </span>{ <span class="hljs-comment">/* … */</span> }
+
+<span class="hljs-highlight  prop">foo</span>(<span class="hljs-string">'a'</span>, <span class="hljs-string">'b'</span>, <span class="hljs-string">'c'</span>, <span class="hljs-string">'d'</span>, …);</code></pre>
+
+Rest parameters can even be type hinted:
+
+<pre><code class="language-php hljs php"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">foo</span><span class="hljs-params">($first, <span class="hljs-highlight  type">string</span> ...$other)</span> </span>{ <span class="hljs-comment">/* … */</span> }
+
+<span class="hljs-highlight  prop">foo</span>(<span class="hljs-string">'a'</span>, <span class="hljs-string">'b'</span>, <span class="hljs-string">'c'</span>, <span class="hljs-string">'d'</span>, …);</code></pre>
+
+
+            <div class="flex items-center">
+                 <small class="mr-2 inline-block font-sans font-semibold border border-black  border-opacity-50 bg-opacity-75 text-black px-1 text-xxs">7.4</small>
+  Arrays with numerical keys can also be spread into a new array:
+            </div>
+
+
+            <pre><code class="language-php hljs php">$a = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>];
+$b = [<span class="hljs-number">3</span>, <span class="hljs-number">4</span>];
+
+$result = [...$a, ...$b]; <span class="hljs-comment">// [1, 2, 3, 4]</span></code></pre>
+</div>
+ 
+    </div>
+</div>
+ 
+
+                <div id="attributes" class="lg:col-span-2 bg-blue-200 bg-opacity-50 p-6 target:shadow-xl target:bg-yellow-100">
+    <h2 class="marker-target flex items-center">
+        <a href="#attributes"
+            class="markup-anchor">#
+        </a>
+
+        Attributes
+
+                     <small class="ml-2 inline-block font-sans font-semibold border border-black  border-opacity-50 bg-opacity-75 text-black px-1 text-xxs">8.0</small>
+ 
+            </h2>
+
+    Make your own by tagging a class with <code><span class="hljs-highlight  comment">#[<span class="hljs-highlight  type">Attribute</span>]</span></code>
+
+
+<pre><code class="language-php hljs php"><span class="hljs-comment">#[<span class="hljs-highlight  type">Attribute</span>]</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ListensTo</span>
+</span>{
+    <span class="hljs-keyword">public</span> <span class="hljs-highlight  type">string</span> <span class="hljs-highlight  prop">$event</span>;
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__construct</span><span class="hljs-params">(<span class="hljs-highlight  type">string</span> $event)</span>
+    </span>{
+        <span class="hljs-keyword">$this</span>-&gt;<span class="hljs-highlight  prop">event</span> = $event;
+    }
+}</code></pre>
+
+You can add them to properties, (anonymous) classes, functions, constants, closures, function arguments:
+
+<pre><code class="language-php hljs php"><span class="hljs-comment">#[</span>
+    <span class="hljs-highlight  type">Route</span>(<span class="hljs-highlight  type">Http</span>::<span class="hljs-highlight  prop">POST</span>, <span class="hljs-string">'/products/create'</span>),
+    <span class="hljs-highlight  type">Autowire</span>,
+<span class="hljs-highlight  comment">]</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ProductsCreateController</span>
+</span>{
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__invoke</span><span class="hljs-params">()</span> </span>{ <span class="hljs-comment">/* … */</span> }
+}</code></pre>
+
+Use reflection to get them, you can pass in optional arguments to `<hljs prop>getAttributes</hljs>` in order to filter the result:
+
+<pre><code class="language-php hljs php">$attributes = $reflectionClass-&gt;<span class="hljs-highlight  prop">getAttributes</span>(
+    <span class="hljs-highlight  type">ContainerAttribute</span><span class="hljs-highlight  keyword">::class</span>,
+    <span class="hljs-highlight  type">ReflectionAttribute</span>::<span class="hljs-highlight  prop">IS_INSTANCEOF</span>
+);</code></pre>
+</div>
+ 
+
+                <div id="cosmetics" class="lg:col-span-2 bg-blue-200 bg-opacity-50 p-6 target:shadow-xl target:bg-yellow-100">
+    <h2 class="marker-target flex items-center">
+        <a href="#cosmetics"
+            class="markup-anchor">#
+        </a>
+
+        Cosmetics
+
+            </h2>
+
+    <div class="grid lg:grid-cols-2 xl:grid-cols-3 gap-6">
+         <div id="class-names" class=" bg-blue-300 bg-opacity-20 p-6 target:shadow-xl target:bg-yellow-100">
+    <h3 class="marker-target flex items-center">
+        <a href="#class-names"
+            class="markup-anchor">#
+        </a>
+
+        Class Names
+
+                     <small class="ml-2 inline-block font-sans font-semibold border border-black  border-opacity-50 bg-opacity-75 text-black px-1 text-xxs">8.0</small>
+ 
+            </h3>
+
+    <p>As of PHP 8, you can use <code><span class="hljs-keyword">::class</span></code> on objects as well:</p>
+
+<pre><code class="language-php hljs php"><span class="hljs-highlight  type">Order</span><span class="hljs-keyword">::class</span>;
+
+$object<span class="hljs-keyword">::class</span>;</code></pre>
+</div>
+ 
+
+         <div id="format-numeric-values" class=" bg-blue-300 bg-opacity-20 p-6 target:shadow-xl target:bg-yellow-100">
+    <h3 class="marker-target flex items-center">
+        <a href="#format-numeric-values"
+            class="markup-anchor">#
+        </a>
+
+        Numeric Values
+
+                     <small class="ml-2 inline-block font-sans font-semibold border border-black  border-opacity-50 bg-opacity-75 text-black px-1 text-xxs">8.0</small>
+ 
+            </h3>
+
+    <p>Use the <code>_</code> operator to format numeric values:</p>
+
+<pre><code class="language-php hljs php">$price = <span class="hljs-number">100</span>_10;
+<div class="hljs-comment">// $100 and 10 cents</div></code></pre>
+</div>
+ 
+
+         <div id="trailing-commas" class=" bg-blue-300 bg-opacity-20 p-6 target:shadow-xl target:bg-yellow-100">
+    <h3 class="marker-target flex items-center">
+        <a href="#trailing-commas"
+            class="markup-anchor">#
+        </a>
+
+        Trailing Commas
+
+                     <small class="ml-2 inline-block font-sans font-semibold border border-black  border-opacity-50 bg-opacity-75 text-black px-1 text-xxs">8.0</small>
+ 
+            </h3>
+
+    <p>Trailing commas are allowed in several places:</p>
+
+            <ul>
+                <li>Arrays</li>
+                <li>Function calls</li>
+                <li>Function definitions</li>
+                <li>Closure <code>use</code> statements</li>
+            </ul>
+</div>
+ 
+    </div>
+</div>
+ 
+
+                <div id="exceptions" class=" bg-blue-200 bg-opacity-50 p-6 target:shadow-xl target:bg-yellow-100">
+    <h2 class="marker-target flex items-center">
+        <a href="#exceptions"
+            class="markup-anchor">#
+        </a>
+
+        Exceptions
+
+                     <small class="ml-2 inline-block font-sans font-semibold border border-black  border-opacity-50 bg-opacity-75 text-black px-1 text-xxs">8.0</small>
+ 
+            </h2>
+
+    <p>Throwing an exception is an expression now, which means there are more places you can throw from, such as short closures or as a null coalescing fallback:</p>
+
+<pre><code class="language-php hljs php">$error = <span class="hljs-highlight  keyword">fn</span>($message) =&gt; <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-highlight  type">Error</span>($message);
+
+$input = $data[<span class="hljs-string">'input'</span>] ?? <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-highlight  type"><span class="hljs-keyword">Exception</span></span>(<span class="hljs-string">'Input not set'</span>);</code></pre>
+
+    <p>You also don't have to catch an exception with a variable anymore:</p>
+
+<pre><code class="language-php hljs php"><span class="hljs-keyword">try</span> {
+    <span class="hljs-comment">// …</span>
+} <span class="hljs-keyword">catch</span> (<span class="hljs-highlight  type">SpecificException</span>) {
+    <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-highlight  type">OtherException</span>();
+}</code></pre>
+</div>
+ 
+
+                <div id="match-expression" class=" bg-blue-200 bg-opacity-50 p-6 target:shadow-xl target:bg-yellow-100">
+    <h2 class="marker-target flex items-center">
+        <a href="#match-expression"
+            class="markup-anchor">#
+        </a>
+
+        Match
+
+                     <small class="ml-2 inline-block font-sans font-semibold border border-black  border-opacity-50 bg-opacity-75 text-black px-1 text-xxs">8.0</small>
+ 
+            </h2>
+
+    <p>Similar to <code><span class="hljs-highlight  keyword">switch</span></code>, but with strong type checks, no
+        <code><span class="hljs-highlight  keyword">break</span></code> keyword, combined arms and it returns a value:
+    </p>
+
+    <pre><code class="language-php hljs php">$message = <span class="hljs-highlight  keyword">match</span> ($statusCode) {
+    <span class="hljs-number">200</span>, <span class="hljs-number">300</span> =&gt; <span class="hljs-keyword">null</span>,
+    <span class="hljs-number">400</span> =&gt; <span class="hljs-string">'not found'</span>,
+    <span class="hljs-number">500</span> =&gt; <span class="hljs-string">'server error'</span>,
+    <span class="hljs-keyword">default</span> =&gt; <span class="hljs-string">'unknown status code'</span>,
+};</code></pre>
+</div>
+ 
+
+                <div id="dealing-with-null" class="lg:col-span-2 bg-blue-200 bg-opacity-50 p-6 target:shadow-xl target:bg-yellow-100">
+    <h2 class="marker-target flex items-center">
+        <a href="#dealing-with-null"
+            class="markup-anchor">#
+        </a>
+
+        Dealing with null
+
+            </h2>
+
+    <div class="grid lg:grid-cols-2 items-start gap-6">
+         <div id="null-coalescing-operator" class=" bg-blue-300 bg-opacity-20 p-6 target:shadow-xl target:bg-yellow-100">
+    <h3 class="marker-target flex items-center">
+        <a href="#null-coalescing-operator"
+            class="markup-anchor">#
+        </a>
+
+        Null Coalescing
+
+                     <small class="ml-2 inline-block font-sans font-semibold border border-black  border-opacity-50 bg-opacity-75 text-black px-1 text-xxs">7.0</small>
+ 
+            </h3>
+
+    <p>Use the null coalescing operator to provide a fallback when a property is <code>null</code>:</p>
+
+            <pre><code class="language-php hljs php">$paymentDate = $invoice-&gt;<span class="hljs-highlight  prop">paymentDate</span> ?? <span class="hljs-highlight  type">Date</span>::<span class="hljs-highlight  prop">now</span>();</code></pre>
+
+            <p>It also works nested:</p>
+
+            <pre><code class="language-php hljs php">$input = $data[<span class="hljs-string">'few'</span>][<span class="hljs-string">'levels'</span>][<span class="hljs-string">'deep'</span>] ?? <span class="hljs-string">'foo'</span>;</code></pre>
+
+
+            <div class="flex items-center">
+                 <small class="mr-2 inline-block font-sans font-semibold border border-black  border-opacity-50 bg-opacity-75 text-black px-1 text-xxs">7.4</small>
+ 
+                You can use the null coalescing
+                <em>assignment</em> operator to write the value into the original variable when it's
+                <code>null</code>:
+            </div>
+
+            <pre><code class="language-php hljs php">$temporaryPaymentDate = $invoice-&gt;<span class="hljs-highlight  prop">paymentDate</span> ??= <span class="hljs-highlight  type">Date</span>::<span class="hljs-highlight  prop">now</span>();
+
+<span class="hljs-comment">// $invoice-&gt;paymentDate is now also set</span></code></pre>
+</div>
+ 
+
+         <div id="nullsafe-operator" class=" bg-blue-300 bg-opacity-20 p-6 target:shadow-xl target:bg-yellow-100">
+    <h3 class="marker-target flex items-center">
+        <a href="#nullsafe-operator"
+            class="markup-anchor">#
+        </a>
+
+        Nullsafe Operator
+
+                     <small class="ml-2 inline-block font-sans font-semibold border border-black  border-opacity-50 bg-opacity-75 text-black px-1 text-xxs">8.0</small>
+ 
+            </h3>
+
+    <p>Chain methods that possibly return <code>null</code>:</p>
+
+            <pre><code class="language-php hljs php">$invoice
+    -&gt;<span class="hljs-highlight  prop">getPaymentDate</span>()
+    ?-&gt;<span class="hljs-highlight  prop">format</span>(<span class="hljs-string">'Y-m-d'</span>);</code></pre>
+
+            <p>The nullsafe operator can also be chained multiple times:</p>
+
+            <pre><code class="language-php hljs php">$object
+    ?-&gt;<span class="hljs-highlight  prop">methodA</span>()
+    ?-&gt;<span class="hljs-highlight  prop">methodB</span>()
+    ?-&gt;<span class="hljs-highlight  prop">methodC</span>();</code></pre>
+</div>
+ 
+    </div>
+</div>
+ 
+
+                <div id="named-arguments" class=" bg-blue-200 bg-opacity-50 p-6 target:shadow-xl target:bg-yellow-100">
+    <h2 class="marker-target flex items-center">
+        <a href="#named-arguments"
+            class="markup-anchor">#
+        </a>
+
+        Named Arguments
+
+                     <small class="ml-2 inline-block font-sans font-semibold border border-black  border-opacity-50 bg-opacity-75 text-black px-1 text-xxs">8.0</small>
+ 
+            </h2>
+
+    <p>Pass in arguments by name instead of their position:</p>
+
+    <pre><code class="language-php hljs php"><span class="hljs-highlight  prop">setcookie</span>(
+    <span class="hljs-highlight  prop">name</span>: <span class="hljs-string">'test'</span>,
+    <span class="hljs-highlight  prop">expires</span>: <span class="hljs-highlight  prop">time</span>() + <span class="hljs-number">60</span> * <span class="hljs-number">60</span> * <span class="hljs-number">2</span>,
+);</code></pre>
+
+    <p>Named arguments also support array spreading:</p>
+
+    <pre><code class="language-php hljs php">$data = [
+    <span class="hljs-string">'name'</span> =&gt; <span class="hljs-string">'test'</span>,
+    <span class="hljs-string">'expires'</span> =&gt; <span class="hljs-highlight  prop">time</span>() + <span class="hljs-number">60</span> * <span class="hljs-number">60</span> * <span class="hljs-number">2</span>,
+];
+
+<span class="hljs-highlight  prop">setcookie</span>(...$data);</code></pre>
+</div>
+ 
+
+                <div id="performance" class="lg:row-span-2 bg-blue-200 bg-opacity-50 p-6 target:shadow-xl target:bg-yellow-100">
+    <h2 class="marker-target flex items-center">
+        <a href="#performance"
+            class="markup-anchor">#
+        </a>
+
+        Performance
+
+            </h2>
+
+    <div class="space-y-6">
+         <div id="jit" class=" bg-blue-300 bg-opacity-20 p-6 target:shadow-xl target:bg-yellow-100">
+    <h3 class="marker-target flex items-center">
+        <a href="#jit"
+            class="markup-anchor">#
+        </a>
+
+        The JIT
+
+                     <small class="ml-2 inline-block font-sans font-semibold border border-black  border-opacity-50 bg-opacity-75 text-black px-1 text-xxs">8.0</small>
+ 
+            </h3>
+
+    <p>Enable the JIT by specifying a buffer size in your ini settings; you can switch the jit mode between
+                <code>function</code> or <code>tracing</code>:</p>
+
+            <pre><code class="language-ini hljs ini"><span class="hljs-highlight  prop">opcache.jit_buffer_size</span>=100M
+
+<span class="hljs-highlight  prop">opcache.jit</span>=function
+<span class="hljs-comment">; opcache.jit=tracing</span></code></pre>
+</div>
+ 
+
+         <div id="preloading" class=" bg-blue-300 bg-opacity-20 p-6 target:shadow-xl target:bg-yellow-100">
+    <h3 class="marker-target flex items-center">
+        <a href="#preloading"
+            class="markup-anchor">#
+        </a>
+
+        Preloading
+
+                     <small class="ml-2 inline-block font-sans font-semibold border border-black  border-opacity-50 bg-opacity-75 text-black px-1 text-xxs">7.4</small>
+ 
+            </h3>
+
+    <p>Add <code><span class="hljs-highlight  prop">opcache.preload</span></code> to your ini settings:</p>
+
+            <pre><code class="language-ini hljs ini"><span class="hljs-highlight  prop">opcache.preload</span>=/path&#8203;/to&#8203;/project&#8203;/preload.php</code></pre>
+
+            <p>Every file that's loaded in the preload script will be preloaded into memory until server restart.</p>
+</div>
+ 
+    </div>
+</div>
+ 
+
+                <div id="property-promotion" class="lg:row-span-3 bg-blue-200 bg-opacity-50 p-6 target:shadow-xl target:bg-yellow-100">
+    <h2 class="marker-target flex items-center">
+        <a href="#property-promotion"
+            class="markup-anchor">#
+        </a>
+
+        Property Promotion
+
+                     <small class="ml-2 inline-block font-sans font-semibold border border-black  border-opacity-50 bg-opacity-75 text-black px-1 text-xxs">8.0</small>
+ 
+            </h2>
+
+    <p>Prefix constructor arguments with <code><span class="hljs-highlight  keyword">public</span></code>, <code><span class="hljs-highlight  keyword">protected</span></code> or <code><span class="hljs-highlight  keyword">private</span></code> to make them promoted:</p>
+
+    <pre><code class="language-php hljs php"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">CustomerDTO</span>
+</span>{
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__construct</span><span class="hljs-params">(
+        <span class="hljs-highlight  keyword">public</span> <span class="hljs-highlight  type">string</span> <span class="hljs-highlight  prop">$name</span>,
+        <span class="hljs-highlight  keyword">public</span> <span class="hljs-highlight  type">string</span> <span class="hljs-highlight  prop">$email</span>,
+        <span class="hljs-highlight  keyword">public</span> <span class="hljs-highlight  type">DateTimeImmutable</span> <span class="hljs-highlight  prop">$birth_date</span>,
+    )</span> </span>{}
+}</code></pre>
+
+    <p>You can still add a constructor body, and combine both promoted and non-promoted properties:</p>
+
+    <pre><code class="language-php hljs php"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyClass</span>
+</span>{
+    <span class="hljs-keyword">public</span> <span class="hljs-highlight  type">string</span> <span class="hljs-highlight  prop">$b</span>;
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__construct</span><span class="hljs-params">(
+        <span class="hljs-highlight  keyword">public</span> <span class="hljs-highlight  type">string</span> <span class="hljs-highlight  prop">$a</span>,
+        <span class="hljs-highlight  type">string</span> $b,
+    )</span> </span>{
+        <span class="hljs-highlight  prop">assert</span>(<span class="hljs-keyword">$this</span>-&gt;<span class="hljs-highlight  prop">a</span> !== <span class="hljs-string">'foo'</span>);
+
+        <span class="hljs-keyword">$this</span>-&gt;<span class="hljs-highlight  prop">b</span> = $b;
+    }
+}</code></pre>
+</div>
+ 
+
+                <div id="short-closures" class="lg:row-span-2 bg-blue-200 bg-opacity-50 p-6 target:shadow-xl target:bg-yellow-100">
+    <h2 class="marker-target flex items-center">
+        <a href="#short-closures"
+            class="markup-anchor">#
+        </a>
+
+        Short Closures
+
+                     <small class="ml-2 inline-block font-sans font-semibold border border-black  border-opacity-50 bg-opacity-75 text-black px-1 text-xxs">7.4</small>
+ 
+            </h2>
+
+    <p>Short closures have automatic access to the outer scope, and only allow a single expression which is automatically returned:</p>
+
+    <pre><code class="language-php hljs php"><span class="hljs-highlight  prop">array_map</span>(
+    <span class="hljs-highlight  keyword">fn</span>($x) =&gt; $x * <span class="hljs-keyword">$this</span>-&gt;<span class="hljs-highlight  prop">modifier</span>,
+    $numbers
+);</code></pre>
+</div>
+ 
+
+                <div id="types" class="lg:col-span-2 bg-blue-200 bg-opacity-50 p-6 target:shadow-xl target:bg-yellow-100">
+    <h2 class="marker-target flex items-center">
+        <a href="#types"
+            class="markup-anchor">#
+        </a>
+
+        Types
+
+            </h2>
+
+    <div class="grid lg:grid-cols-2 gap-6">
+         <div id="built-in-types" class=" bg-blue-300 bg-opacity-20 p-6 target:shadow-xl target:bg-yellow-100">
+    <h3 class="marker-target flex items-center">
+        <a href="#built-in-types"
+            class="markup-anchor">#
+        </a>
+
+        Built-in Types
+
+            </h3>
+
+    <p>During the PHP 7.x releases and with PHP 8, several new built-in types were added:</p>
+
+            <ul>
+                <li>
+                    <code><span class="hljs-highlight  type">void</span></code>: a return type indicating nothing's returned  <small class=" inline-block font-sans font-semibold border border-black  border-opacity-50 bg-opacity-75 text-black px-1 text-xxs">7.1</small>
+ 
+                </li>
+                <li>
+                    <code><span class="hljs-highlight  type">static</span></code>: a return type representing the current class or its children  <small class=" inline-block font-sans font-semibold border border-black  border-opacity-50 bg-opacity-75 text-black px-1 text-xxs">8.0</small>
+ 
+                </li>
+                <li>
+                    <code><span class="hljs-highlight  type">object</span></code>: anything that is an object  <small class=" inline-block font-sans font-semibold border border-black  border-opacity-50 bg-opacity-75 text-black px-1 text-xxs">7.2</small>
+ 
+                </li>
+                <li>
+                    <code><span class="hljs-highlight  type">mixed</span></code>: anything  <small class=" inline-block font-sans font-semibold border border-black  border-opacity-50 bg-opacity-75 text-black px-1 text-xxs">8.0</small>
+ </li>
+            </ul>
+</div>
+ 
+
+         <div id="typed-properties" class="row-span-2 bg-blue-300 bg-opacity-20 p-6 target:shadow-xl target:bg-yellow-100">
+    <h3 class="marker-target flex items-center">
+        <a href="#typed-properties"
+            class="markup-anchor">#
+        </a>
+
+        Typed properties
+
+                     <small class="ml-2 inline-block font-sans font-semibold border border-black  border-opacity-50 bg-opacity-75 text-black px-1 text-xxs">7.4</small>
+ 
+            </h3>
+
+    <p>Add types to your class properties:</p>
+
+            <pre><code class="language-php hljs php"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Offer</span>
+</span>{
+    <span class="hljs-keyword">public</span> <span class="hljs-highlight  type">?string</span> <span class="hljs-highlight  prop">$offerNumber</span> = <span class="hljs-keyword">null</span>;
+
+    <span class="hljs-keyword">public</span> <span class="hljs-highlight  type">Money</span> <span class="hljs-highlight  prop">$totalPrice</span>;
+}</code></pre>
+
+            <p>Beware of the <code>uninitialized</code> state, which is only checked when reading a property, and not when constructing the class:</p>
+
+            <pre><code class="language-php hljs php">$offer = <span class="hljs-keyword">new</span> <span class="hljs-highlight  type">Offer</span>();
+
+$offer-&gt;<span class="hljs-highlight  prop">totalPrice</span>; <span class="hljs-comment">// Error</span></code></pre>
+</div>
+ 
+
+         <div id="union-types" class=" bg-blue-300 bg-opacity-20 p-6 target:shadow-xl target:bg-yellow-100">
+    <h3 class="marker-target flex items-center">
+        <a href="#union-types"
+            class="markup-anchor">#
+        </a>
+
+        Union Types
+
+                     <small class="ml-2 inline-block font-sans font-semibold border border-black  border-opacity-50 bg-opacity-75 text-black px-1 text-xxs">8.0</small>
+ 
+            </h3>
+
+    <p>Combine several types into one union, which means that whatever input must match one of the given types:</p>
+
+            <pre><code class="language-php hljs php"><span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">Repository</span>
+</span>{
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">find</span><span class="hljs-params">(<span class="hljs-highlight  type">int|string</span> $id)</span></span>;
+}</code></pre>
+</div>
+ 
+    </div>
+</div>
+ 
+
+            </article>
+        </div>
+    </div>
+
+    <div class="max-w-5xl mx-auto">
+        <section class="z-10 -mb-8 bg-purple-500 px-8 md:px-16 py-16 shadow-xl" style="background-image: linear-gradient(to right, #0756b0 0%, #4530a8 80%)">
+    <div class="absolute inset-0 overflow-hidden">
+        <div style="left: 50%" class="line-1 | absolute top-0 w-1 h-full"></div>
+        <div style="left: 53%" class="line-2 | absolute top-0 w-1 h-full"></div>
+        <div style="left: 63%" class="line-3 | absolute top-0 w-2 h-full"></div>
+        <div style="left: 68%" class="line-4 | absolute top-0 w-2 h-full"></div>
+        <div style="left: 75%" class="line-5 | absolute top-0 w-1 h-full"></div>
+        <div style="left: 83%" class="line-6 | absolute top-0 w-1 h-full"></div>
+    </div>
+
+    
+            <h2 class="text-6xl font-display mb-8 leading-none text-white text-opacity-90">
+            1
+        </h2>
+        <div class="block text-xl md:text-2xl font-semibold leading-relaxed text-white text-opacity-90">
+            Get 30% off on the entire ebook for the next
+            <div>
+                <div class="font-sans font-normal px-1 py-1" style="font-variant-numeric:tabular-nums">
+                     <div
+    x-data="
+{
+    timer: {
+        days: '00',
+        hours: '01',
+        minutes: '56',
+        seconds: '02',
+    },
+    startCounter: function () {
+        let runningCounter = setInterval(() => {
+            let countDownDate = new Date(1606809600 * 1000).getTime();
+            let timeDistance = countDownDate - new Date().getTime();
+
+            if (timeDistance < 0) {
+                clearInterval(runningCounter);
+
+                return;
+            }
+
+            this.timer.days = this.formatCounter(Math.floor(timeDistance / (1000 * 60 * 60 * 24)));
+            this.timer.hours = this.formatCounter(Math.floor((timeDistance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)));
+            this.timer.minutes = this.formatCounter(Math.floor((timeDistance % (1000 * 60 * 60)) / (1000 * 60)));
+            this.timer.seconds = this.formatCounter(Math.floor((timeDistance % (1000 * 60)) / 1000));
+        }, 1000);
+    },
+    formatCounter: function (number) {
+        return number.toString().padStart(2, '0');
+    }
+}
+"
+    x-init="startCounter()"
+    
+>
+            <span class="font-bold bg-white bg-opacity-25 px-1"><span
+                                x-text="timer.days">00</span> <span
+                                class="font-semibold text-white text-opacity-75">days</span></span>
+                        <span class="font-bold bg-white bg-opacity-25 px-1"><span
+                                x-text="timer.hours">01</span> <span
+                                class="font-semibold text-white text-opacity-75">hours</span></span>
+                        <span class="font-bold bg-white bg-opacity-25 px-1"><span
+                                x-text="timer.minutes">56</span> <span
+                                class="font-semibold text-white text-opacity-75">minutes</span></span>
+                        <span class="font-bold bg-white bg-opacity-25 px-1"><span
+                                x-text="timer.seconds">02</span> <span
+                                class="font-semibold text-white text-opacity-75">seconds</span></span>
+    </div>
+ 
+                </div>
+            </div>
+        </div>
+    
+    <div class="flex justify-end">
+        <div class="flex flex-col items-end">
+            <a href="https://spatie.be/products/front-line-php">
+                 <button class="h-12 inline-flex items-center px-6 font-display text-2xl text-black bg-yellow-500 shadow-md text-opacity-90">
+    Buy Ebook <i class="ml-4 fas fa-play text-xs text-black"></i>
+</button> 
+            </a>
+        </div>
+    </div>
+
+</section>
+    </div>
+</main>
+
+<footer class="bg-black pt-32 pb-8">
+    <img alt="" srcset="/images/footer-2400.jpg 2400w, /images/footer-1200.jpg 1200w" sizes="100vw" src="https://front-line-php.com/images/footer-2400.jpg" class="absolute top-0 left-0 w-full h-full object-cover opacity-20">
+    <nav class="flex items-end justify-between mx-auto max-w-5xl px-4 sm:px-16">
+        <a href="https://spatie.be" class="h-8 inline-block">
+            <svg class="w-auto h-full" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 595.28 255.12">
+    <title>SPATIE</title>
+    <g>
+        <path class="fill-current text-spatie" d="M0,9.77A10,10,0,0,1,10.26,0H585a10,10,0,0,1,10.28,9.77V245.36A10,10,0,0,1,585,255.12H10.26A10,10,0,0,1,0,245.36V9.77Z"></path>
+    </g>
+    <g>
+        <path d="M95.6,156.66l10.87-14.84c6.46,5.32,13.82,8.95,21.52,8.95,5.44,0,8.27-2.38,8.27-5.78v-0.11c0-3.17-2.38-5.1-11.67-8.38-14.95-5.1-25.48-10.53-25.48-24.92v-0.34c0-14.38,11-24.46,28.31-24.46,10.65,0,20,2.94,28.31,9.63l-10.31,15.17c-5.44-4.19-12-7.25-18.46-7.25-4.64,0-7.25,2.27-7.25,5.21v0.11c0,3.51,2.49,5.32,12.57,9.06,15.06,4.87,24.46,11,24.46,24.46v0.23c0,15.4-11.89,24.92-28.88,24.92A48.26,48.26,0,0,1,95.6,156.66Z" class="fill-current text-white"></path>
+        <path d="M175.67,87.92H204c18.69,0,30.92,9.74,30.92,27.52v0.45c0,19-13.82,28.09-31.14,28.31h-7.81v23H175.67V87.92Zm27.41,39.64c7.13,0,11.44-4.19,11.44-10.87v-0.34c0-7.25-4.19-11-11.55-11h-7v22.2h7.13Z" class="fill-current text-white"></path>
+        <path d="M267.17,87.47h20.61l28,79.73h-21.4l-4.64-14.27H264.8l-4.53,14.27h-21Zm17.44,49.15-7.36-23.22-7.36,23.22h14.72Z" class="fill-current text-white"></path>
+        <path d="M338.64,106.27H319V87.92h59.57v18.35H359V167.2H338.64V106.27Z" class="fill-current text-white"></path>
+        <path d="M396.17,87.92h20.39V167.2H396.17V87.92Z" class="fill-current text-white"></path>
+        <path d="M444.64,87.92h54.59v17.89H464.8v13h31v16.88h-31V149.3h34.88V167.2h-55V87.92Z" class="fill-current text-white"></path>
+    </g>
+</svg>
+            
+        </a>
+        <ul class="flex space-x-8">
+            <li><a class="text-white opacity-25 hover:opacity-50 transition-opacity duration-200" href="https://front-line-php.com/privacy">Privacy</a></li>
+            <li><a class="text-white opacity-25 hover:opacity-50 transition-opacity duration-200" href="https://front-line-php.com/terms-of-use">Terms of Use</a></li>
+        </ul>
+    </nav>
+</footer>
+</body>
+</html>
