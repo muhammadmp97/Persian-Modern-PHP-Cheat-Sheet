@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -40,6 +39,12 @@
         
         <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.7.3/dist/alpine.min.js" defer></script>
 
+        <style>
+            .pl-2 {padding-right: .5rem !important;}
+            .rtl {direction: rtl !important;}
+            .border-l {border-right-width: 1px; border-left: none;}
+            .markup-tables p {direction: rtl; text-align: justify;}
+        </style>
 
                     </head>
     <body class="overflow-x-hidden font-sans text-black">
@@ -67,53 +72,6 @@
 
 <main class="mx-auto px-4 sm:px-16">
     <div class="lg:flex lg:space-x-16 ">
-        <nav class="text-sm w-64 lg:w-auto flex-none pb-12">
-            <ul class="sticky top-0 py-4 -my-4 space-y-2 text-blue-500 font-semibold">
-    <li>
-        <a class="hover:opacity-75" href="#arrays">Arrays</a>
-        <ul class="pl-2 my-1 space-y-1 border-l border-black text-xs font-normal">
-            <li><a class="hover:opacity-75" href="#destructuring">Destructuring</a></li>
-            <li><a class="hover:opacity-75" href="#rest-spread-operators">Rest and Spread Operators</a></li>
-        </ul>
-    </li>
-    <li><a class="hover:opacity-75" href="#attributes">Attributes</a></li>
-    <li>
-        <a class="hover:opacity-75" href="#cosmetics">Cosmetics</a>
-        <ul class="pl-2 my-1 space-y-1 border-l border-black text-xs font-normal">
-            <li><a class="hover:opacity-75" href="#class-names">Class Names</a></li>
-            <li><a class="hover:opacity-75" href="#format-numeric-values">Numeric Values</a></li>
-            <li><a class="hover:opacity-75" href="#trailing-commas">Trailing Commas</a></li>
-        </ul>
-    </li>
-    <li><a class="hover:opacity-75" href="#exceptions">Exceptions</a></li>
-    <li><a class="hover:opacity-75" href="#match-expression">Match Expression</a></li>
-    <li>
-        <a class="hover:opacity-75" href="#dealing-with-null">Null</a>
-        <ul class="pl-2 my-1 space-y-1 border-l border-black text-xs font-normal">
-            <li><a class="hover:opacity-75" href="#null-coalescing-operator">Null Coalescing Operator</a></li>
-            <li><a class="hover:opacity-75" href="#nullsafe-operator">Nullsafe Operator</a></li>
-        </ul>
-    </li>
-    <li><a class="hover:opacity-75" href="#named-arguments">Named Arguments</a></li>
-    <li>
-        <a class="hover:opacity-75" href="#performance">Performance</a>
-        <ul class="pl-2 my-1 space-y-1 border-l border-black text-xs font-normal">
-            <li><a class="hover:opacity-75" href="#jit">JIT</a></li>
-            <li><a class="hover:opacity-75" href="#preloading">Preloading</a></li>
-        </ul>
-    </li>
-    <li><a class="hover:opacity-75" href="#property-promotion">Property Promotion</a></li>
-    <li><a class="hover:opacity-75" href="#short-closures">Short Closures</a></li>
-    <li>
-        <a class="hover:opacity-75" href="#types">Types</a>
-        <ul class="pl-2 my-1 space-y-1 border-l border-black text-xs font-normal">
-            <li><a class="hover:opacity-75" href="#built-in-types">Built-in Types</a></li>
-            <li><a class="hover:opacity-75" href="#typed-properties">Typed Properties</a></li>
-            <li><a class="hover:opacity-75" href="#union-types">Union Types</a></li>
-        </ul>
-    </li>
-</ul>
-        </nav>
         <div>
             <aside class="mx-auto max-w-article sm:px-16">
     <div style="background-image: linear-gradient(to right, #0756b0 0%, #4530a8 80%)" class="z-10 -mb-4 text-white px-6 py-4 text-sm">
@@ -146,7 +104,7 @@
  
             </h3>
 
-    You can destructure arrays to pull out several elements into separate variables:
+    <p>You can destructure arrays to pull out several elements into separate variables:</p>
 
 <pre><code class="language- hljs ">$array = [1, 2, 3];
 
@@ -156,13 +114,13 @@
 // Or the shorthand syntax:
 [$a, $b, $c] = $array;</code></pre>
 
-You can skip elements:
+<p>You can skip elements:</p>
 
 <pre><code class="language-php hljs php">[, , $c] = $array;
 
 <span class="hljs-comment">// $c = 3</span></code></pre>
 
-As well as destructure based on keys:
+<p>As well as destructure based on keys:</p>
 
 <pre><code class="language-php hljs php">$array = [
     <span class="hljs-string">'a'</span> =&gt; <span class="hljs-number">1</span>,
@@ -185,7 +143,7 @@ As well as destructure based on keys:
  
             </h3>
 
-    Arrays can be spread into functions:
+    <p>Arrays can be spread into functions:</p>
 
 <pre><code class="language-php hljs php">$array = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>];
 
@@ -193,14 +151,14 @@ As well as destructure based on keys:
 
 <span class="hljs-highlight  prop">foo</span>(...$array);</code></pre>
 
-Functions can automatically collect the rest of the variables using the same operator:
+<p>Functions can automatically collect the rest of the variables using the same operator:</p>
 
 
 <pre><code class="language-php hljs php"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">foo</span><span class="hljs-params">($first, ...$other)</span> </span>{ <span class="hljs-comment">/* … */</span> }
 
 <span class="hljs-highlight  prop">foo</span>(<span class="hljs-string">'a'</span>, <span class="hljs-string">'b'</span>, <span class="hljs-string">'c'</span>, <span class="hljs-string">'d'</span>, …);</code></pre>
 
-Rest parameters can even be type hinted:
+<p>Rest parameters can even be type hinted:</p>
 
 <pre><code class="language-php hljs php"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">foo</span><span class="hljs-params">($first, <span class="hljs-highlight  type">string</span> ...$other)</span> </span>{ <span class="hljs-comment">/* … */</span> }
 
@@ -235,7 +193,7 @@ $result = [...$a, ...$b]; <span class="hljs-comment">// [1, 2, 3, 4]</span></cod
  
             </h2>
 
-    Make your own by tagging a class with <code><span class="hljs-highlight  comment">#[<span class="hljs-highlight  type">Attribute</span>]</span></code>
+    <p>Make your own by tagging a class with <code><span class="hljs-highlight  comment">#[<span class="hljs-highlight  type">Attribute</span>]</span></code></p>
 
 
 <pre><code class="language-php hljs php"><span class="hljs-comment">#[<span class="hljs-highlight  type">Attribute</span>]</span>
@@ -249,7 +207,7 @@ $result = [...$a, ...$b]; <span class="hljs-comment">// [1, 2, 3, 4]</span></cod
     }
 }</code></pre>
 
-You can add them to properties, (anonymous) classes, functions, constants, closures, function arguments:
+<p>You can add them to properties, (anonymous) classes, functions, constants, closures, function arguments:</p>
 
 <pre><code class="language-php hljs php"><span class="hljs-comment">#[</span>
     <span class="hljs-highlight  type">Route</span>(<span class="hljs-highlight  type">Http</span>::<span class="hljs-highlight  prop">POST</span>, <span class="hljs-string">'/products/create'</span>),
@@ -260,7 +218,7 @@ You can add them to properties, (anonymous) classes, functions, constants, closu
     <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__invoke</span><span class="hljs-params">()</span> </span>{ <span class="hljs-comment">/* … */</span> }
 }</code></pre>
 
-Use reflection to get them, you can pass in optional arguments to `<hljs prop>getAttributes</hljs>` in order to filter the result:
+<p>Use reflection to get them, you can pass in optional arguments to `<hljs prop>getAttributes</hljs>` in order to filter the result:</p>
 
 <pre><code class="language-php hljs php">$attributes = $reflectionClass-&gt;<span class="hljs-highlight  prop">getAttributes</span>(
     <span class="hljs-highlight  type">ContainerAttribute</span><span class="hljs-highlight  keyword">::class</span>,
@@ -720,6 +678,54 @@ $offer-&gt;<span class="hljs-highlight  prop">totalPrice</span>; <span class="hl
 
             </article>
         </div>
+
+        <nav class="text-sm w-64 lg:w-auto flex-none pb-12">
+            <ul class="rtl sticky top-0 py-4 -my-4 space-y-2 text-blue-500 font-semibold">
+    <li>
+        <a class="hover:opacity-75" href="#arrays">Arrays</a>
+        <ul class="pl-2 my-1 space-y-1 border-l border-black text-xs font-normal">
+            <li><a class="hover:opacity-75" href="#destructuring">Destructuring</a></li>
+            <li><a class="hover:opacity-75" href="#rest-spread-operators">Rest and Spread Operators</a></li>
+        </ul>
+    </li>
+    <li><a class="hover:opacity-75" href="#attributes">Attributes</a></li>
+    <li>
+        <a class="hover:opacity-75" href="#cosmetics">Cosmetics</a>
+        <ul class="pl-2 my-1 space-y-1 border-l border-black text-xs font-normal">
+            <li><a class="hover:opacity-75" href="#class-names">Class Names</a></li>
+            <li><a class="hover:opacity-75" href="#format-numeric-values">Numeric Values</a></li>
+            <li><a class="hover:opacity-75" href="#trailing-commas">Trailing Commas</a></li>
+        </ul>
+    </li>
+    <li><a class="hover:opacity-75" href="#exceptions">Exceptions</a></li>
+    <li><a class="hover:opacity-75" href="#match-expression">Match Expression</a></li>
+    <li>
+        <a class="hover:opacity-75" href="#dealing-with-null">Null</a>
+        <ul class="pl-2 my-1 space-y-1 border-l border-black text-xs font-normal">
+            <li><a class="hover:opacity-75" href="#null-coalescing-operator">Null Coalescing Operator</a></li>
+            <li><a class="hover:opacity-75" href="#nullsafe-operator">Nullsafe Operator</a></li>
+        </ul>
+    </li>
+    <li><a class="hover:opacity-75" href="#named-arguments">Named Arguments</a></li>
+    <li>
+        <a class="hover:opacity-75" href="#performance">Performance</a>
+        <ul class="pl-2 my-1 space-y-1 border-l border-black text-xs font-normal">
+            <li><a class="hover:opacity-75" href="#jit">JIT</a></li>
+            <li><a class="hover:opacity-75" href="#preloading">Preloading</a></li>
+        </ul>
+    </li>
+    <li><a class="hover:opacity-75" href="#property-promotion">Property Promotion</a></li>
+    <li><a class="hover:opacity-75" href="#short-closures">Short Closures</a></li>
+    <li>
+        <a class="hover:opacity-75" href="#types">Types</a>
+        <ul class="pl-2 my-1 space-y-1 border-l border-black text-xs font-normal">
+            <li><a class="hover:opacity-75" href="#built-in-types">Built-in Types</a></li>
+            <li><a class="hover:opacity-75" href="#typed-properties">Typed Properties</a></li>
+            <li><a class="hover:opacity-75" href="#union-types">Union Types</a></li>
+        </ul>
+    </li>
+</ul>
+        </nav>
     </div>
 
     <div class="max-w-5xl mx-auto">
