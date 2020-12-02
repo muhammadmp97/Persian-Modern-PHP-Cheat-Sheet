@@ -73,10 +73,10 @@
 <main class="mx-auto px-4 sm:px-16">
     <div class="lg:flex lg:space-x-16 ">
         <div>
-            <aside class="mx-auto max-w-article sm:px-16">
+            <aside class="mx-auto max-w-article sm:px-16 rtl">
     <div style="background-image: linear-gradient(to right, #0756b0 0%, #4530a8 80%)" class="z-10 -mb-4 text-white px-6 py-4 text-sm">
-        This sample is an excerpt from the ebook <a href="/"><strong class="font-semibold hover:opacity-75">Front Line PHP</strong></a>. 
-        <br>Check out <a href="/" class="underline hover:opacity-75">the entire book</a> to learn how to build modern applications in PHP 8.
+        این نمونه، چکیده‌ای از کتاب <strong>Front Line PHP</strong> است.
+        <br><a href="https://front-line-php.com/" class="underline hover:opacity-75">نسخه‌ی کامل کتاب</a> به شما می‌آموزد که اپلیکیشن‌های مدرنی با PHP8 بسازید.
     </div>
 </aside>            <article class="grid lg:grid-cols-2 gap-12 pb-24 markup markup-links markup-lists markup-code markup-tables">
 
@@ -104,7 +104,7 @@
  
             </h3>
 
-    <p>You can destructure arrays to pull out several elements into separate variables:</p>
+    <p>می‌توانید با شکستن یک آرایه، مقادیر آن را در متغیرهای جداگانه‌ای قرار دهید:</p>
 
 <pre><code class="language- hljs ">$array = [1, 2, 3];
 
@@ -114,13 +114,13 @@
 // Or the shorthand syntax:
 [$a, $b, $c] = $array;</code></pre>
 
-<p>You can skip elements:</p>
+<p>همچنین می‌توانید از برخی المنت‌ها چشم‌پوشی کنید:</p>
 
 <pre><code class="language-php hljs php">[, , $c] = $array;
 
 <span class="hljs-comment">// $c = 3</span></code></pre>
 
-<p>As well as destructure based on keys:</p>
+<p>همچنین می‌توانید از کلیدها برای این کار استفاده کنید:</p>
 
 <pre><code class="language-php hljs php">$array = [
     <span class="hljs-string">'a'</span> =&gt; <span class="hljs-number">1</span>,
@@ -143,7 +143,7 @@
  
             </h3>
 
-    <p>Arrays can be spread into functions:</p>
+    <p>مقادیر یک آرایه می‌تواند در یک فانکشن پخش شود:</p>
 
 <pre><code class="language-php hljs php">$array = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>];
 
@@ -151,14 +151,14 @@
 
 <span class="hljs-highlight  prop">foo</span>(...$array);</code></pre>
 
-<p>Functions can automatically collect the rest of the variables using the same operator:</p>
+<p>فانکشن‌ها می‌توانند سایر متغیرها را با همان عملگر ... دریافت کنند:</p>
 
 
 <pre><code class="language-php hljs php"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">foo</span><span class="hljs-params">($first, ...$other)</span> </span>{ <span class="hljs-comment">/* … */</span> }
 
 <span class="hljs-highlight  prop">foo</span>(<span class="hljs-string">'a'</span>, <span class="hljs-string">'b'</span>, <span class="hljs-string">'c'</span>, <span class="hljs-string">'d'</span>, …);</code></pre>
 
-<p>Rest parameters can even be type hinted:</p>
+<p>این پارامترها از Hint Typing هم پشتیبانی می‌کنند:</p>
 
 <pre><code class="language-php hljs php"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">foo</span><span class="hljs-params">($first, <span class="hljs-highlight  type">string</span> ...$other)</span> </span>{ <span class="hljs-comment">/* … */</span> }
 
@@ -167,7 +167,7 @@
 
             <div class="flex items-center">
                  <small class="mr-2 inline-block font-sans font-semibold border border-black  border-opacity-50 bg-opacity-75 text-black px-1 text-xxs">7.4</small>
-  Arrays with numerical keys can also be spread into a new array:
+                 آرایه‌هایی که کلیدهایشان عددی باشد، می‌توانند درون یک آرایه‌ی جدید با هم پخش شوند:
             </div>
 
 
@@ -193,7 +193,7 @@ $result = [...$a, ...$b]; <span class="hljs-comment">// [1, 2, 3, 4]</span></cod
  
             </h2>
 
-    <p>Make your own by tagging a class with <code><span class="hljs-highlight  comment">#[<span class="hljs-highlight  type">Attribute</span>]</span></code></p>
+    <p>می‌توانید با <code><span class="hljs-highlight  comment">#[<span class="hljs-highlight  type">Attribute</span>]</span></code> ویژگی سفارشی خود را بسازید!</p>
 
 
 <pre><code class="language-php hljs php"><span class="hljs-comment">#[<span class="hljs-highlight  type">Attribute</span>]</span>
@@ -207,7 +207,7 @@ $result = [...$a, ...$b]; <span class="hljs-comment">// [1, 2, 3, 4]</span></cod
     }
 }</code></pre>
 
-<p>You can add them to properties, (anonymous) classes, functions, constants, closures, function arguments:</p>
+<p>می‌توانید ویژگی‌ها را به پراپرتی‌ها، کلاس‌ها (بی‌نام = Anonymous)، توابع، ثوابت، closureها و آرگومان‌های توابع اضافه کنید:</p>
 
 <pre><code class="language-php hljs php"><span class="hljs-comment">#[</span>
     <span class="hljs-highlight  type">Route</span>(<span class="hljs-highlight  type">Http</span>::<span class="hljs-highlight  prop">POST</span>, <span class="hljs-string">'/products/create'</span>),
@@ -218,7 +218,7 @@ $result = [...$a, ...$b]; <span class="hljs-comment">// [1, 2, 3, 4]</span></cod
     <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__invoke</span><span class="hljs-params">()</span> </span>{ <span class="hljs-comment">/* … */</span> }
 }</code></pre>
 
-<p>Use reflection to get them, you can pass in optional arguments to `<hljs prop>getAttributes</hljs>` in order to filter the result:</p>
+<p>از <code>reflection</code> برای گرفتن آنها استفاده کنید. می‌توانید برای فیلترکردن نتیجه، آرگومان‌های اختیاری را به <code>getAttributes</code> ارائه دهید:</p>
 
 <pre><code class="language-php hljs php">$attributes = $reflectionClass-&gt;<span class="hljs-highlight  prop">getAttributes</span>(
     <span class="hljs-highlight  type">ContainerAttribute</span><span class="hljs-highlight  keyword">::class</span>,
@@ -250,7 +250,7 @@ $result = [...$a, ...$b]; <span class="hljs-comment">// [1, 2, 3, 4]</span></cod
  
             </h3>
 
-    <p>As of PHP 8, you can use <code><span class="hljs-keyword">::class</span></code> on objects as well:</p>
+    <p>در PHP8 می‌توانید از <code><span class="hljs-keyword">::class</span></code> بر روی آبجکت‌ها استفاده کنید:</p>
 
 <pre><code class="language-php hljs php"><span class="hljs-highlight  type">Order</span><span class="hljs-keyword">::class</span>;
 
@@ -270,7 +270,7 @@ $object<span class="hljs-keyword">::class</span>;</code></pre>
  
             </h3>
 
-    <p>Use the <code>_</code> operator to format numeric values:</p>
+    <p>از <code>_</code> برای قالب‌بندی داده‌های عددی استفاده کنید:</p>
 
 <pre><code class="language-php hljs php">$price = <span class="hljs-number">100</span>_10;
 <div class="hljs-comment">// $100 and 10 cents</div></code></pre>
@@ -289,13 +289,13 @@ $object<span class="hljs-keyword">::class</span>;</code></pre>
  
             </h3>
 
-    <p>Trailing commas are allowed in several places:</p>
+    <p>کاماهای پایانی می‌توانند در جاهای مختلفی استفاده شوند:</p>
 
             <ul>
-                <li>Arrays</li>
-                <li>Function calls</li>
-                <li>Function definitions</li>
-                <li>Closure <code>use</code> statements</li>
+                <li>آرایه‌ها</li>
+                <li>فراخوانی توابع</li>
+                <li>تعریف‌کردن توابع</li>
+                <li>عبارت <code>use</code> در Closureها</li>
             </ul>
 </div>
  
@@ -315,13 +315,13 @@ $object<span class="hljs-keyword">::class</span>;</code></pre>
  
             </h2>
 
-    <p>Throwing an exception is an expression now, which means there are more places you can throw from, such as short closures or as a null coalescing fallback:</p>
+    <p>از این به بعد می‌توانید از <code>throw</code> در جاهای زیادی استفاده کنید:</p>
 
 <pre><code class="language-php hljs php">$error = <span class="hljs-highlight  keyword">fn</span>($message) =&gt; <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-highlight  type">Error</span>($message);
 
 $input = $data[<span class="hljs-string">'input'</span>] ?? <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-highlight  type"><span class="hljs-keyword">Exception</span></span>(<span class="hljs-string">'Input not set'</span>);</code></pre>
 
-    <p>You also don't have to catch an exception with a variable anymore:</p>
+    <p>همچنین دیگر مجبور نیستید که استثنا را از طریق یک متغیر بگیرید:</p>
 
 <pre><code class="language-php hljs php"><span class="hljs-keyword">try</span> {
     <span class="hljs-comment">// …</span>
@@ -343,8 +343,8 @@ $input = $data[<span class="hljs-string">'input'</span>] ?? <span class="hljs-ke
  
             </h2>
 
-    <p>Similar to <code><span class="hljs-highlight  keyword">switch</span></code>, but with strong type checks, no
-        <code><span class="hljs-highlight  keyword">break</span></code> keyword, combined arms and it returns a value:
+    <p>شبیه <code><span class="hljs-highlight  keyword">switch</span></code>, اما قدرتمندتر؛ دیگر به 
+        <code><span class="hljs-highlight  keyword">break</span></code> نیازی نیست، شرط‌های مرکب می‌سازیم و یک مقدار را به عنوان خروجی دریافت می‌کنیم:
     </p>
 
     <pre><code class="language-php hljs php">$message = <span class="hljs-highlight  keyword">match</span> ($statusCode) {
@@ -379,11 +379,11 @@ $input = $data[<span class="hljs-string">'input'</span>] ?? <span class="hljs-ke
  
             </h3>
 
-    <p>Use the null coalescing operator to provide a fallback when a property is <code>null</code>:</p>
+    <p>وقتی یک پراپرتی <code>null</code> بود، از این طریق می‌توانید جایگزینی برای آن تعیین کنید:</p>
 
             <pre><code class="language-php hljs php">$paymentDate = $invoice-&gt;<span class="hljs-highlight  prop">paymentDate</span> ?? <span class="hljs-highlight  type">Date</span>::<span class="hljs-highlight  prop">now</span>();</code></pre>
 
-            <p>It also works nested:</p>
+            <p>با مقادیر تودرتو هم کار می‌کند:</p>
 
             <pre><code class="language-php hljs php">$input = $data[<span class="hljs-string">'few'</span>][<span class="hljs-string">'levels'</span>][<span class="hljs-string">'deep'</span>] ?? <span class="hljs-string">'foo'</span>;</code></pre>
 
@@ -391,9 +391,7 @@ $input = $data[<span class="hljs-string">'input'</span>] ?? <span class="hljs-ke
             <div class="flex items-center">
                  <small class="mr-2 inline-block font-sans font-semibold border border-black  border-opacity-50 bg-opacity-75 text-black px-1 text-xxs">7.4</small>
  
-                You can use the null coalescing
-                <em>assignment</em> operator to write the value into the original variable when it's
-                <code>null</code>:
+                <p>می‌توانید از عملگر <code>null coalescing assignment</code> استفاده کنید تا اگر متغیر اصلی null بود، مقدار جایگزین در هردو نوشته شود:</p>
             </div>
 
             <pre><code class="language-php hljs php">$temporaryPaymentDate = $invoice-&gt;<span class="hljs-highlight  prop">paymentDate</span> ??= <span class="hljs-highlight  type">Date</span>::<span class="hljs-highlight  prop">now</span>();
@@ -414,13 +412,13 @@ $input = $data[<span class="hljs-string">'input'</span>] ?? <span class="hljs-ke
  
             </h3>
 
-    <p>Chain methods that possibly return <code>null</code>:</p>
+    <p>متدهای زنجیره‌وار که در آنها احتمال <code>null</code> آمدن وجود دارد را ایمن نگه دارید:</p>
 
             <pre><code class="language-php hljs php">$invoice
     -&gt;<span class="hljs-highlight  prop">getPaymentDate</span>()
     ?-&gt;<span class="hljs-highlight  prop">format</span>(<span class="hljs-string">'Y-m-d'</span>);</code></pre>
 
-            <p>The nullsafe operator can also be chained multiple times:</p>
+            <p>زنجیره‌ی متدها، متدهای متعددی را بیاورید:</p>
 
             <pre><code class="language-php hljs php">$object
     ?-&gt;<span class="hljs-highlight  prop">methodA</span>()
@@ -444,14 +442,14 @@ $input = $data[<span class="hljs-string">'input'</span>] ?? <span class="hljs-ke
  
             </h2>
 
-    <p>Pass in arguments by name instead of their position:</p>
+    <p>بدون اهمیت‌دادن به جای آرگومان‌ها، از نام استفاده کنید:</p>
 
     <pre><code class="language-php hljs php"><span class="hljs-highlight  prop">setcookie</span>(
     <span class="hljs-highlight  prop">name</span>: <span class="hljs-string">'test'</span>,
     <span class="hljs-highlight  prop">expires</span>: <span class="hljs-highlight  prop">time</span>() + <span class="hljs-number">60</span> * <span class="hljs-number">60</span> * <span class="hljs-number">2</span>,
 );</code></pre>
 
-    <p>Named arguments also support array spreading:</p>
+    <p>همچنین می‌توانید از <code>array spreading</code> نیز استفاده کنید:</p>
 
     <pre><code class="language-php hljs php">$data = [
     <span class="hljs-string">'name'</span> =&gt; <span class="hljs-string">'test'</span>,
@@ -485,8 +483,7 @@ $input = $data[<span class="hljs-string">'input'</span>] ?? <span class="hljs-ke
  
             </h3>
 
-    <p>Enable the JIT by specifying a buffer size in your ini settings; you can switch the jit mode between
-                <code>function</code> or <code>tracing</code>:</p>
+    <p>با مشخص‌کردن <code>buffer size</code> در تنظیمات ini، JIT را فعال کنید. همچنین می‌توانید بین دو مد <code>function</code> و <code>tracing</code> به آسانی تغییر حالت دهید:</p>
 
             <pre><code class="language-ini hljs ini"><span class="hljs-highlight  prop">opcache.jit_buffer_size</span>=100M
 
@@ -507,11 +504,11 @@ $input = $data[<span class="hljs-string">'input'</span>] ?? <span class="hljs-ke
  
             </h3>
 
-    <p>Add <code><span class="hljs-highlight  prop">opcache.preload</span></code> to your ini settings:</p>
+    <p><code><span class="hljs-highlight  prop">opcache.preload</span></code> را به تنظیمات ini اضافه کنید:</p>
 
             <pre><code class="language-ini hljs ini"><span class="hljs-highlight  prop">opcache.preload</span>=/path&#8203;/to&#8203;/project&#8203;/preload.php</code></pre>
 
-            <p>Every file that's loaded in the preload script will be preloaded into memory until server restart.</p>
+            <p>هر فایلی که در اسکریپت preloading.php فراخوانی شده باشد، تا زمانی که سرور ریستارت نشود، در حافظه preload خواهد شد.</p>
 </div>
  
     </div>
@@ -530,7 +527,7 @@ $input = $data[<span class="hljs-string">'input'</span>] ?? <span class="hljs-ke
  
             </h2>
 
-    <p>Prefix constructor arguments with <code><span class="hljs-highlight  keyword">public</span></code>, <code><span class="hljs-highlight  keyword">protected</span></code> or <code><span class="hljs-highlight  keyword">private</span></code> to make them promoted:</p>
+    <p>از پیشوندهای <code><span class="hljs-highlight  keyword">public</span></code>، <code><span class="hljs-highlight  keyword">protected</span></code> و <code><span class="hljs-highlight  keyword">private</span></code> استفاده کنید تا به عنوان پراپرتی کلاس تعریف شوند:</p>
 
     <pre><code class="language-php hljs php"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">CustomerDTO</span>
 </span>{
@@ -541,7 +538,7 @@ $input = $data[<span class="hljs-string">'input'</span>] ?? <span class="hljs-ke
     )</span> </span>{}
 }</code></pre>
 
-    <p>You can still add a constructor body, and combine both promoted and non-promoted properties:</p>
+    <p>هنوز هم می‌توانید بدنه‌ی constructor را اضافه کنید و دو نوع promoted و غیر promoted را در پراپرتی‌هایتان داشته باشید:</p>
 
     <pre><code class="language-php hljs php"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyClass</span>
 </span>{
@@ -571,7 +568,7 @@ $input = $data[<span class="hljs-string">'input'</span>] ?? <span class="hljs-ke
  
             </h2>
 
-    <p>Short closures have automatic access to the outer scope, and only allow a single expression which is automatically returned:</p>
+    <p>Closureهای کوتاه، به فضای بیرون از scope خود دسترسی دارند و تنها اجازه‌ی یک عبارت را می‌دهند که به طور خودکار return خواهد شد:</p>
 
     <pre><code class="language-php hljs php"><span class="hljs-highlight  prop">array_map</span>(
     <span class="hljs-highlight  keyword">fn</span>($x) =&gt; $x * <span class="hljs-keyword">$this</span>-&gt;<span class="hljs-highlight  prop">modifier</span>,
@@ -601,23 +598,23 @@ $input = $data[<span class="hljs-string">'input'</span>] ?? <span class="hljs-ke
 
             </h3>
 
-    <p>During the PHP 7.x releases and with PHP 8, several new built-in types were added:</p>
+    <p>طی انتشار نسخه‌های PHP 7.x و PHP 8، چندین نوع داده‌ای اضافه شده است:</p>
 
             <ul>
                 <li>
-                    <code><span class="hljs-highlight  type">void</span></code>: a return type indicating nothing's returned  <small class=" inline-block font-sans font-semibold border border-black  border-opacity-50 bg-opacity-75 text-black px-1 text-xxs">7.1</small>
+                    نوع <code><span class="hljs-highlight  type">void</span></code>: به این معنا که چیزی return نشده است  <small class=" inline-block font-sans font-semibold border border-black  border-opacity-50 bg-opacity-75 text-black px-1 text-xxs">7.1</small>
  
                 </li>
                 <li>
-                    <code><span class="hljs-highlight  type">static</span></code>: a return type representing the current class or its children  <small class=" inline-block font-sans font-semibold border border-black  border-opacity-50 bg-opacity-75 text-black px-1 text-xxs">8.0</small>
+                    نوع <code><span class="hljs-highlight  type">static</span></code>: کلاس فعلی یا فرزند آن را نشان می‌دهد  <small class=" inline-block font-sans font-semibold border border-black  border-opacity-50 bg-opacity-75 text-black px-1 text-xxs">8.0</small>
  
                 </li>
                 <li>
-                    <code><span class="hljs-highlight  type">object</span></code>: anything that is an object  <small class=" inline-block font-sans font-semibold border border-black  border-opacity-50 bg-opacity-75 text-black px-1 text-xxs">7.2</small>
+                    نوع <code><span class="hljs-highlight  type">object</span></code>: هرچیزی که یک Object باشد  <small class=" inline-block font-sans font-semibold border border-black  border-opacity-50 bg-opacity-75 text-black px-1 text-xxs">7.2</small>
  
                 </li>
                 <li>
-                    <code><span class="hljs-highlight  type">mixed</span></code>: anything  <small class=" inline-block font-sans font-semibold border border-black  border-opacity-50 bg-opacity-75 text-black px-1 text-xxs">8.0</small>
+                    نوع <code><span class="hljs-highlight  type">mixed</span></code>: همه‌چیز  <small class=" inline-block font-sans font-semibold border border-black  border-opacity-50 bg-opacity-75 text-black px-1 text-xxs">8.0</small>
  </li>
             </ul>
 </div>
@@ -635,7 +632,7 @@ $input = $data[<span class="hljs-string">'input'</span>] ?? <span class="hljs-ke
  
             </h3>
 
-    <p>Add types to your class properties:</p>
+    <p>به پراپرتی‌های کلاس خود، نوع داده‌ای را هم اضافه کنید:</p>
 
             <pre><code class="language-php hljs php"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Offer</span>
 </span>{
@@ -644,7 +641,7 @@ $input = $data[<span class="hljs-string">'input'</span>] ?? <span class="hljs-ke
     <span class="hljs-keyword">public</span> <span class="hljs-highlight  type">Money</span> <span class="hljs-highlight  prop">$totalPrice</span>;
 }</code></pre>
 
-            <p>Beware of the <code>uninitialized</code> state, which is only checked when reading a property, and not when constructing the class:</p>
+            <p>مراقب حالت مقداردهی نشده یا <code>uninitialized</code> باشید؛ این حالت در هنگام خواندن یک پراپرتی بررسی می‌شود، نه وقتی که از کلاسی نمونه می‌سازید:</p>
 
             <pre><code class="language-php hljs php">$offer = <span class="hljs-keyword">new</span> <span class="hljs-highlight  type">Offer</span>();
 
@@ -664,7 +661,7 @@ $offer-&gt;<span class="hljs-highlight  prop">totalPrice</span>; <span class="hl
  
             </h3>
 
-    <p>Combine several types into one union, which means that whatever input must match one of the given types:</p>
+    <p>چندین نوع داده‌ای را با هم ترکیب کنید؛ به این معنا که ورودی باید موافق یکی از این انواع باشد:</p>
 
             <pre><code class="language-php hljs php"><span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">Repository</span>
 </span>{
@@ -682,46 +679,46 @@ $offer-&gt;<span class="hljs-highlight  prop">totalPrice</span>; <span class="hl
         <nav class="text-sm w-64 lg:w-auto flex-none pb-12">
             <ul class="rtl sticky top-0 py-4 -my-4 space-y-2 text-blue-500 font-semibold">
     <li>
-        <a class="hover:opacity-75" href="#arrays">Arrays</a>
+        <a class="hover:opacity-75" href="#arrays">آرایه‌ها</a>
         <ul class="pl-2 my-1 space-y-1 border-l border-black text-xs font-normal">
-            <li><a class="hover:opacity-75" href="#destructuring">Destructuring</a></li>
+            <li><a class="hover:opacity-75" href="#destructuring">تجزیه‌کردن</a></li>
             <li><a class="hover:opacity-75" href="#rest-spread-operators">Rest and Spread Operators</a></li>
         </ul>
     </li>
-    <li><a class="hover:opacity-75" href="#attributes">Attributes</a></li>
+    <li><a class="hover:opacity-75" href="#attributes">ویژگی‌ها</a></li>
     <li>
-        <a class="hover:opacity-75" href="#cosmetics">Cosmetics</a>
+        <a class="hover:opacity-75" href="#cosmetics">تجملات</a>
         <ul class="pl-2 my-1 space-y-1 border-l border-black text-xs font-normal">
-            <li><a class="hover:opacity-75" href="#class-names">Class Names</a></li>
-            <li><a class="hover:opacity-75" href="#format-numeric-values">Numeric Values</a></li>
-            <li><a class="hover:opacity-75" href="#trailing-commas">Trailing Commas</a></li>
+            <li><a class="hover:opacity-75" href="#class-names">نام کلاس‌ها</a></li>
+            <li><a class="hover:opacity-75" href="#format-numeric-values">مقدارهای عددی</a></li>
+            <li><a class="hover:opacity-75" href="#trailing-commas">کاماهای پایانی</a></li>
         </ul>
     </li>
-    <li><a class="hover:opacity-75" href="#exceptions">Exceptions</a></li>
-    <li><a class="hover:opacity-75" href="#match-expression">Match Expression</a></li>
+    <li><a class="hover:opacity-75" href="#exceptions">استثناها</a></li>
+    <li><a class="hover:opacity-75" href="#match-expression">عبارت Match</a></li>
     <li>
-        <a class="hover:opacity-75" href="#dealing-with-null">Null</a>
+        <a class="hover:opacity-75" href="#dealing-with-null">کارکردن با Null</a>
         <ul class="pl-2 my-1 space-y-1 border-l border-black text-xs font-normal">
-            <li><a class="hover:opacity-75" href="#null-coalescing-operator">Null Coalescing Operator</a></li>
-            <li><a class="hover:opacity-75" href="#nullsafe-operator">Nullsafe Operator</a></li>
+            <li><a class="hover:opacity-75" href="#null-coalescing-operator">ایجاد جایگزین</a></li>
+            <li><a class="hover:opacity-75" href="#nullsafe-operator">عملگرد Nullsafe</a></li>
         </ul>
     </li>
-    <li><a class="hover:opacity-75" href="#named-arguments">Named Arguments</a></li>
+    <li><a class="hover:opacity-75" href="#named-arguments">نام‌گذاری آرگومان‌ها</a></li>
     <li>
-        <a class="hover:opacity-75" href="#performance">Performance</a>
+        <a class="hover:opacity-75" href="#performance">کارایی</a>
         <ul class="pl-2 my-1 space-y-1 border-l border-black text-xs font-normal">
             <li><a class="hover:opacity-75" href="#jit">JIT</a></li>
             <li><a class="hover:opacity-75" href="#preloading">Preloading</a></li>
         </ul>
     </li>
-    <li><a class="hover:opacity-75" href="#property-promotion">Property Promotion</a></li>
-    <li><a class="hover:opacity-75" href="#short-closures">Short Closures</a></li>
+    <li><a class="hover:opacity-75" href="#property-promotion">پیش‌اندازی پراپرتی‌ها</a></li>
+    <li><a class="hover:opacity-75" href="#short-closures">Closureهای کوتاه</a></li>
     <li>
-        <a class="hover:opacity-75" href="#types">Types</a>
+        <a class="hover:opacity-75" href="#types">انواع داده‌ای</a>
         <ul class="pl-2 my-1 space-y-1 border-l border-black text-xs font-normal">
-            <li><a class="hover:opacity-75" href="#built-in-types">Built-in Types</a></li>
-            <li><a class="hover:opacity-75" href="#typed-properties">Typed Properties</a></li>
-            <li><a class="hover:opacity-75" href="#union-types">Union Types</a></li>
+            <li><a class="hover:opacity-75" href="#built-in-types">نوع‌های پیش‌ساخته</a></li>
+            <li><a class="hover:opacity-75" href="#typed-properties">ویژگی‌های تایپ‌شده</a></li>
+            <li><a class="hover:opacity-75" href="#union-types">انواع مجتمع</a></li>
         </ul>
     </li>
 </ul>
